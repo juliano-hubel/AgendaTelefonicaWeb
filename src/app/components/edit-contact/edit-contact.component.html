@@ -1,0 +1,32 @@
+<form [formGroup]="form">
+  <div class="container">
+    <h1 class="title">Editar Contato</h1>
+    <h2 class="subtitle">
+    </h2>
+    <br>
+    <div class="field">
+      <label class="label">Nome {{contact?.name}}</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="João da Silva" formControlName="name" value="{{contact?.name}}">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control">
+        <input class="input" type="email" placeholder="joaosilva@gmail.com" formControlName="email" value="{{contact?.email}}">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Telefone</label>
+      <div class="control">
+        <input class="input" type="email" placeholder="(11) 8888-8888" formControlName="phone" value="{{contact?.phone}}">
+      </div>
+    </div>
+  </div>
+  <div class="field is-right">
+    <div class="control">
+        <button class="button is-link" (click)="submit()">Submit</button>
+    </div>            
+</div>
+</form>
