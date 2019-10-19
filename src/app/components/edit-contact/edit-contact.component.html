@@ -1,3 +1,4 @@
+<app-header></app-header>
 <form [formGroup]="form">
   <div class="container">
     <h1 class="title">Editar Contato</h1>
@@ -5,7 +6,7 @@
     </h2>
     <br>
     <div class="field">
-      <label class="label">Nome {{contact?.name}}</label>
+      <label class="label">Nome {{contact?.id}}</label>
       <div class="control">
         <input class="input" type="text" placeholder="João da Silva" formControlName="name" value="{{contact?.name}}">
       </div>
@@ -30,3 +31,4 @@
     </div>            
 </div>
 </form>
+<app-footer></app-footer>

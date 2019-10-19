@@ -23,5 +23,18 @@ export class ContactsComponent implements OnInit {
     console.log(this.contacts$);
   }
 
+  deleteContact(Id:any)
+  {
+     this.dataService.deleteContact(Id).subscribe(
+       result=> {
+         console.log(result);
+         this.getContacts();
+       },
+       error => {
+         console.log(error);
+       }
+     );
+  }
+
 
 }

@@ -1,3 +1,3 @@
 export class Contact{    
-    constructor(private id, private name, private email, private phone ) { }
+    constructor(public id, public name, public email, public phone ) { }
 }

@@ -10,6 +10,7 @@ import { DataService } from './services/data.service';
 import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
 import { EditContactComponent } from './components/edit-contact/edit-contact.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ContactDetailsComponent } from './components/contact-details/contact-details.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ContactsComponent,
     HeaderComponent,
     FooterComponent,
-    EditContactComponent
+    EditContactComponent,
+    ContactDetailsComponent
   ],
   imports: [
     BrowserModule,

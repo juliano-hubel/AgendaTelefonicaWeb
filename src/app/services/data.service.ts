@@ -24,9 +24,19 @@ export class DataService
         return this.http.get<Contact[]>(`${this.serviceUrl}/contacts/${key}`);        
     }
 
-    addContact(contact:Contact)
+    addContact(contact:Contact)    
     {        
         return this.http.post(`${this.serviceUrl}/contacts`, contact);
+    }
+
+    updateContact(contact:Contact)
+    {        
+        return this.http.put(`${this.serviceUrl}/contacts`, contact);
+    }
+
+    deleteContact(id:any)
+    {
+        return this.http.delete(`${this.serviceUrl}/contacts/${id}`);
     }
 
         

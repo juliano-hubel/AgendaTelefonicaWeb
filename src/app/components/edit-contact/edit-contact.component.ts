@@ -14,8 +14,32 @@ export class EditContactComponent implements OnInit {
   public form: FormGroup;
   contact: Contact = null;
 
+
   constructor(private fb: FormBuilder, private dataService: DataService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.BuildForm();
+  }
+
+  ngOnInit() {
+    this.checkExistingContact();
+  }
+
+  private checkExistingContact() {
+
+    this.activatedRoute.params.subscribe(params => {
+      let contactId = params['id'];
+      this.dataService.getContact(contactId).subscribe(result => {
+        this.contact = result;
+        this.fillForm();
+      }, error => { });
+    });
+
+  }
+
+  private fillForm() {
+    this.form.controls['id'].setValue(this.contact.id);
+    this.form.controls['name'].setValue(this.contact.name);
+    this.form.controls['email'].setValue(this.contact.email);
+    this.form.controls['phone'].setValue(this.contact.phone);
   }
 
   private BuildForm() {
@@ -27,26 +51,33 @@ export class EditContactComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.activatedRoute.params.subscribe(
-      params => {
-        let contactId = params['id']        
-        this.dataService.getContact(contactId).subscribe(result => { this.contact = result;   }, error => { })
-      }
-    );
-  }
-  submit() {    
-      this.dataService.addContact(this.form.value).subscribe(
-        result => {
-          console.log(result);
-          this.router.navigateByUrl('/')
+  submit() {
 
-        },
-        error => {
-          console.log(error);
-        }
-      );
-    
+    if (this.form.value.id) {
+      this.updateContact();
+    }
+    else {
+      this.addContact();
+    }
+
   }
 
+
+  private addContact() {
+    this.dataService.addContact(this.form.value).subscribe(result => {
+      console.log(result);
+      this.router.navigateByUrl('/');
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  private updateContact() {
+    this.dataService.updateContact(this.form.value).subscribe(result => {
+      console.log(result);
+      this.router.navigateByUrl('/');
+    }, error => {
+      console.log(error);
+    });
+  }
 }

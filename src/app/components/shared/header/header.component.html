@@ -3,7 +3,7 @@
       <nav class="navbar">
           <div class="container">
               <div class="navbar-brand">
-                  <a class="navbar-item merri medium-text">
+                  <a [routerLink]="['/']" class="navbar-item merri medium-text">
                       Agenda Telefônica
                   </a>
                   <span class="navbar-burger burger" data-target="navbarMenuHeroA">
@@ -14,7 +14,7 @@
               </div>
               <div id="navbarMenuHeroA" class="navbar-menu">
                   <div class="navbar-end">
-                      <a class="navbar-item" routerLinkActive="is-active" [routerLink]="['/alunos']">
+                      <a class="navbar-item" routerLinkActive="is-active" [routerLink]="['/']">
                           Contatos
                       </a>                                
                   </div>
